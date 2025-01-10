@@ -27,16 +27,41 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 final class SuggestMissingPackageSubscriber implements EventSubscriberInterface
 {
     private const PACKAGES = [
+        'ckeditor' => [
+            '_default' => ['FOSCKEditorBundle', 'friendsofsymfony/ckeditor-bundle'],
+        ],
         'doctrine' => [
             'fixtures' => ['DoctrineFixturesBundle', 'doctrine/doctrine-fixtures-bundle --dev'],
             'mongodb' => ['DoctrineMongoDBBundle', 'doctrine/mongodb-odm-bundle'],
             '_default' => ['Doctrine ORM', 'symfony/orm-pack'],
         ],
+        'lexik' => [
+            '_default' => ['LexikJWTAuthenticationBundle', 'lexik/jwt-authentication-bundle'],
+        ],
+        'liip' => [
+            '_default' => ['LiipImagineBundle', 'liip/imagine-bundle'],
+        ],
         'make' => [
+            'admin' => ['EasyAdminBundle', 'easycorp/easyadmin-bundle'],
             '_default' => ['MakerBundle', 'symfony/maker-bundle --dev'],
+        ],
+        'nelmio' => [
+            '_default' => ['NelmioApiDocBundle', 'nelmio/api-doc-bundle'],
+        ],
+        'sass' => [
+            '_default' => ['SassBundle', 'symfonycasts/sass-bundle'],
+        ],
+        'sonata' => [
+            '_default' => ['SonataAdminBundle', 'sonata-project/admin-bundle'],
         ],
         'server' => [
             '_default' => ['Debug Bundle', 'symfony/debug-bundle --dev'],
+        ],
+        'tailwind' => [
+            '_default' => ['TailwindBundle', 'symfonycasts/tailwind-bundle'],
+        ],
+        'typescript' => [
+            '_default' => ['TypeScriptBundle', 'sensiolabs/typescript-bundle'],
         ],
     ];
 

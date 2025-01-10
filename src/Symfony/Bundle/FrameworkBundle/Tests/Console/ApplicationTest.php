@@ -229,6 +229,48 @@ class ApplicationTest extends TestCase
         $this->assertDoesNotMatchRegularExpression('/You may be looking for a command provided by/', $result);
     }
 
+    public function testSuggestingPackagesWithNoMatch()
+    {
+        $result = $this->createEventForSuggestingPackages('fakeCommand');
+        $this->assertDoesNotMatchRegularExpression('/You may be looking for a command provided by/', $result);
+    }
+
+    public function testSuggestingPackagesDefault()
+    {
+        $result = $this->createEventForSuggestingPackages('ckeditor');
+        $this->assertStringContainsString('FOSCKEditorBundle', $result);
+        $result = $this->createEventForSuggestingPackages('doctrine');
+        $this->assertStringContainsString('Doctrine ORM', $result);
+        $result = $this->createEventForSuggestingPackages('lexik');
+        $this->assertStringContainsString('LexikJWTAuthenticationBundle', $result);
+        $result = $this->createEventForSuggestingPackages('liip');
+        $this->assertStringContainsString('LiipImagineBundle', $result);
+        $result = $this->createEventForSuggestingPackages('make');
+        $this->assertStringContainsString('MakerBundle', $result);
+        $result = $this->createEventForSuggestingPackages('nelmio');
+        $this->assertStringContainsString('NelmioApiDocBundle', $result);
+        $result = $this->createEventForSuggestingPackages('sass');
+        $this->assertStringContainsString('SassBundle', $result);
+        $result = $this->createEventForSuggestingPackages('sonata');
+        $this->assertStringContainsString('SonataAdminBundle', $result);
+        $result = $this->createEventForSuggestingPackages('server');
+        $this->assertStringContainsString('Debug Bundle', $result);
+        $result = $this->createEventForSuggestingPackages('tailwind');
+        $this->assertStringContainsString('TailwindBundle', $result);
+        $result = $this->createEventForSuggestingPackages('typescript');
+        $this->assertStringContainsString('TypeScriptBundle', $result);
+    }
+
+    public function testSuggestingPackagesSpecific()
+    {
+        $result = $this->createEventForSuggestingPackages('doctrine:fixtures');
+        $this->assertStringContainsString('DoctrineFixturesBundle', $result);
+        $result = $this->createEventForSuggestingPackages('doctrine:mongodb');
+        $this->assertStringContainsString('DoctrineMongoDBBundle', $result);
+        $result = $this->createEventForSuggestingPackages('make:admin');
+        $this->assertStringContainsString('EasyAdminBundle', $result);
+    }
+
     private function createEventForSuggestingPackages(string $command, array $alternatives = []): string
     {
         $error = new CommandNotFoundException('', $alternatives);
