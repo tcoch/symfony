@@ -257,7 +257,7 @@ SVG;
 
                     <li>
                         <?php echo $renderInfoIconSvg; ?>
-                        <span>You are seeing this page because the homepage URL is not configured and <a target="_blank" href="https://symfony.com/doc/<?php echo $docVersion; ?>/debug-mode">debug mode</a> is enabled.</span>
+                        <span>You are seeing this page because the homepage URL is not configured and <a target="_blank" href="https://symfony.com/doc/<?php echo $docVersion; ?>/configuration/front_controllers_and_kernel.html#debug-mode">debug mode</a> is enabled.</span>
                     </li>
                 </ul>
 
